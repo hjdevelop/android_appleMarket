@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginRight="20dp"
+        app:cardCornerRadius="20dp">
+
+        <ImageButton
+            android:id="@+id/item_image_imageButton"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/rounded_corner_border"
+            android:scaleType="centerCrop"
+            android:src="@drawable/sample1" />
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_title_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="상품 제목"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/item_address_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="주소"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/item_price_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가격"
+            android:textSize="21sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <ImageView
+                android:id="@+id/item_chat_imageView"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_main_chat" />
+
+            <TextView
+                android:id="@+id/item_chatCount_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/item_like_imageView"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_main_like" />
+
+            <TextView
+                android:id="@+id/item_likeCount_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="23"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
