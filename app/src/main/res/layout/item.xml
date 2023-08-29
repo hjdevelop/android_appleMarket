@@ -19,7 +19,7 @@
             android:id="@+id/item_image_imageButton"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:background="@drawable/rounded_corner_border"
+            android:background="@drawable/rounded_corner_border_main"
             android:scaleType="centerCrop"
             android:src="@drawable/sample1" />
     </androidx.cardview.widget.CardView>
