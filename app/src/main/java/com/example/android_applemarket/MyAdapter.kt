@@ -49,7 +49,7 @@ class MyAdapter(val mItems: MutableList<Product>) : RecyclerView.Adapter<MyAdapt
         val chatCount = binding.itemChatCountTextView
         val likeCount = binding.itemLikeCountTextView
     }
-    fun getDecimalFormat(number: Int): String {
+    private fun getDecimalFormat(number: Int): String {
         val deciamlFormat = DecimalFormat("#,###")
         return deciamlFormat.format(number) + "원"
     }
