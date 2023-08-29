@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_applemarket.databinding.ActivityMainBinding
 import com.example.android_applemarket.databinding.ItemBinding
+import java.text.DecimalFormat
 import java.text.FieldPosition
 
 class MyAdapter(val mItems: MutableList<Product>) : RecyclerView.Adapter<MyAdapter.Holder>() {
@@ -27,7 +28,7 @@ class MyAdapter(val mItems: MutableList<Product>) : RecyclerView.Adapter<MyAdapt
         holder.productImage.setImageResource(mItems[position].productImage)
         holder.title.text = mItems[position].productTitle
         holder.address.text = mItems[position].address
-        holder.price.text = mItems[position].price.toString() + "원"
+        holder.price.text = getDecimalFormat(mItems[position].price)
         holder.chatCount.text = mItems[position].chattingCount.toString()
         holder.likeCount.text = mItems[position].likeCount.toString()
     }
@@ -47,5 +48,9 @@ class MyAdapter(val mItems: MutableList<Product>) : RecyclerView.Adapter<MyAdapt
         val price = binding.itemPriceTextView
         val chatCount = binding.itemChatCountTextView
         val likeCount = binding.itemLikeCountTextView
+    }
+    fun getDecimalFormat(number: Int): String {
+        val deciamlFormat = DecimalFormat("#,###")
+        return deciamlFormat.format(number) + "원"
     }
 }
