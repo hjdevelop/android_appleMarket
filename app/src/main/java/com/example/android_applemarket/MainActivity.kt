@@ -3,7 +3,6 @@ package com.example.android_applemarket
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.DialogInterface
 import android.content.Intent
 import android.media.AudioAttributes
 import android.media.RingtoneManager
@@ -12,9 +11,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.LinearLayout
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
