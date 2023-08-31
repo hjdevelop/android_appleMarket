@@ -13,11 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android_applemarket.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -179,6 +181,34 @@ class MainActivity : AppCompatActivity() {
         binding.mainNotificationImageButton.setOnClickListener {
             notification()
         }
+
+        binding.mainFloatingActionButton.setOnClickListener {
+            binding.recyclerView.smoothScrollToPosition(0)
+        }
+
+        val fadeIn = AlphaAnimation(0f, 1f).apply { duration = 500 }
+        val fadeOut = AlphaAnimation(1f, 0f).apply { duration = 500 }
+        var isTop = true
+
+        binding.mainFloatingActionButton.visibility = View.GONE
+
+        binding.recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!binding.recyclerView.canScrollVertically(-1)
+                    && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    binding.mainFloatingActionButton.startAnimation(fadeOut)
+                    binding.mainFloatingActionButton.visibility = View.GONE
+                    isTop = true
+                } else {
+                    if(isTop) {
+                        binding.mainFloatingActionButton.visibility = View.VISIBLE
+                        binding.mainFloatingActionButton.startAnimation(fadeIn)
+                        isTop = false
+                    }
+                }
+            }
+        })
     }
 
     fun notification() {
