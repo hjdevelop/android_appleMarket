@@ -28,6 +28,9 @@ class DetailActivity : AppCompatActivity() {
         binding.productWriteDetailTextView.text = data?.productWrite
         binding.priceDetailTextView.text = getDecimalFormat(data?.price)
 
+        binding.backDetailImageButton.setOnClickListener {
+            finish()
+        }
     }
     private fun getDecimalFormat(number: Int?): String {
         val deciamlFormat = DecimalFormat("#,###")
