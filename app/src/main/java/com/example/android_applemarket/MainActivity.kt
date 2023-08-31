@@ -11,8 +11,10 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -220,5 +222,10 @@ class MainActivity : AppCompatActivity() {
             addAction(R.mipmap.ic_launcher, "확인", pendingIntent)
         }
         manager.notify(11, builder.build())
+    }
+
+    override fun onBackPressed() {
+        val dlg = EndDialog(this)
+        dlg.show()
     }
 }
