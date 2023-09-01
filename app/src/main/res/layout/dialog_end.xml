@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="center"
-        android:text="정말 종료하시겠습니까?"
+        android:text="@string/endDialog_warning"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -25,7 +25,7 @@
             android:id="@+id/ok_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="확인"
+            android:text="@string/dialog_ok"
             android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_marginLeft="40dp"
@@ -36,7 +36,7 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="취소"
+            android:text="@string/dialog_cancel"
             android:textColor="@color/white"
             android:layout_weight="1"
             android:layout_marginRight="40dp"

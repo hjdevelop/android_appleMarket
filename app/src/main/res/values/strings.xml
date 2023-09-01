@@ -1,4 +1,24 @@
 <resources>
     <string name="app_name">android_appleMarket</string>
-    <string name="detail_temp"><u>매너 온도</u></string>
+
+    <string name="detail_name">이름</string>
+    <string name="detail_address">주소</string>
+    <string name="detail_temp">39.3 ℃</string>
+    <string name="detail_face">😜</string>
+    <string name="detail_title">제목</string>
+    <string name="detail_write">내용</string>
+    <string name="detail_manner"><u>매너 온도</u></string>
+    <string name="detail_price">가격</string>
+    <string name="detail_chat">채팅하기</string>
+
+    <string name="main_location">내배캠동</string>
+    
+    <string name="item_title">상품 제목</string>
+    <string name="item_address">주소</string>
+    <string name="item_price">가격</string>
+    
+    <string name="endDialog_warning">정말 종료하시겠습니까?</string>
+    <string name="deleteDialog_warning">상품을 삭제하시겠습니까?</string>
+    <string name="dialog_ok">확인</string>
+    <string name="dialog_cancel">취소</string>
 </resources>

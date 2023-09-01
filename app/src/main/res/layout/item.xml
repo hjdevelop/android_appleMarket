@@ -35,21 +35,21 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:ellipsize="end"
-            android:text="상품 제목"
+            android:text="@string/item_title"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/item_address_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="주소"
+            android:text="@string/item_address"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/item_price_textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="가격"
+            android:text="@string/item_price"
             android:textSize="21sp"
             android:textStyle="bold" />
 
