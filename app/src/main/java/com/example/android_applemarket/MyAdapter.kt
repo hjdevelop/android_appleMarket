@@ -40,12 +40,14 @@ class MyAdapter(val mItems: MutableList<Product>) : RecyclerView.Adapter<MyAdapt
         holder.price.text = getDecimalFormat(mItems[position].price)
         holder.chatCount.text = mItems[position].chattingCount.toString()
         holder.likeCount.text = mItems[position].likeCount.toString()
-    }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
+        if(mItems[position].isLike) {
+            holder.isLike.setImageResource(R.drawable.ic_detail_heart)
+        }
+        else {
+            holder.isLike.setImageResource(R.drawable.ic_main_like)
+        }
     }
-
     override fun getItemCount(): Int {
         return mItems.size
     }
@@ -57,6 +59,7 @@ class MyAdapter(val mItems: MutableList<Product>) : RecyclerView.Adapter<MyAdapt
         val price = binding.itemPriceTextView
         val chatCount = binding.itemChatCountTextView
         val likeCount = binding.itemLikeCountTextView
+        val isLike = binding.itemLikeImageView
     }
     private fun getDecimalFormat(number: Int): String {
         val deciamlFormat = DecimalFormat("#,###")

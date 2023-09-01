@@ -11,10 +11,13 @@ import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.widget.LinearLayout
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -25,6 +28,7 @@ import com.example.android_applemarket.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -42,7 +46,8 @@ class MainActivity : AppCompatActivity() {
                 1000,
                 "서울 서대문구 창천동",
                 13,
-                25
+                25,
+                false
             )
         )
         dataList.add(
@@ -55,7 +60,8 @@ class MainActivity : AppCompatActivity() {
                 20000,
                 "인천 계양구 귤현동",
                 8,
-                28
+                28,
+                false
             )
         )
         dataList.add(
@@ -68,7 +74,8 @@ class MainActivity : AppCompatActivity() {
                 10000,
                 "수성구 범어동",
                 23,
-                5
+                5,
+                false
             )
         )
         dataList.add(
@@ -81,7 +88,8 @@ class MainActivity : AppCompatActivity() {
                 10000,
                 "해운대구 우제2동",
                 14,
-                17
+                17,
+                false
             )
         )
         dataList.add(
@@ -94,7 +102,8 @@ class MainActivity : AppCompatActivity() {
                 150000,
                 "연제구 연산제8동",
                 22,
-                9
+                9,
+                false
             )
         )
         dataList.add(
@@ -107,7 +116,8 @@ class MainActivity : AppCompatActivity() {
                 50000,
                 "수원시 영통구 원천동",
                 25,
-                16
+                16,
+                false
             )
         )
         dataList.add(
@@ -120,7 +130,8 @@ class MainActivity : AppCompatActivity() {
                 150000,
                 "남구 옥동",
                 142,
-                54
+                54,
+                false
             )
         )
         dataList.add(
@@ -133,7 +144,8 @@ class MainActivity : AppCompatActivity() {
                 180000,
                 "동래구 온천제2동",
                 31,
-                7
+                7,
+                false
             )
         )
         dataList.add(
@@ -146,7 +158,8 @@ class MainActivity : AppCompatActivity() {
                 30000,
                 "원주시 명륜2동",
                 7,
-                28
+                28,
+                false
             )
         )
         dataList.add(
@@ -159,7 +172,8 @@ class MainActivity : AppCompatActivity() {
                 190000,
                 "중구 동화동",
                 40,
-                6
+                6,
+                false
             )
         )
 
@@ -172,8 +186,9 @@ class MainActivity : AppCompatActivity() {
         adapter.itemClick = object : MyAdapter.ItemClick {
             override fun onClick(view: View, position: Int) {
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra("productData", dataList[position])
-                startActivity(intent)
+                intent.putExtra(Constants.OBJECT_DATA, dataList[position])
+                intent.putExtra(Constants.INDEX_DATA, position)
+                activityResultLauncher.launch(intent)
             }
         }
 
@@ -215,6 +230,25 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if(it.resultCode == RESULT_OK) {
+                val dataIndex = it.data?.getIntExtra("dataIndex", 0) as Int
+                val isLike = it.data?.getBooleanExtra("isLike", false) as Boolean
+
+                if(isLike) {
+                    dataList[dataIndex].isLike = true
+                    dataList[dataIndex].likeCount += 1
+                }
+                else {
+                    if(dataList[dataIndex].isLike) {
+                        dataList[dataIndex].isLike = false
+                        dataList[dataIndex].likeCount -= 1
+                    }
+                }
+                adapter.notifyItemChanged(dataIndex)
+            }
+        }
     }
 
     fun notification() {

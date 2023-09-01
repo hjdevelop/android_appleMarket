@@ -12,6 +12,7 @@ data class Product(
     val seller: String,
     val price: Int,
     val address: String,
-    val likeCount: Int,
-    val chattingCount: Int
+    var likeCount: Int,
+    val chattingCount: Int,
+    var isLike: Boolean
 ): Parcelable
