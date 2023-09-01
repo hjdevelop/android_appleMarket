@@ -163,11 +163,10 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        binding.recyclerView.adapter = MyAdapter(dataList)
-
         val adapter = MyAdapter(dataList)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
         binding.recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
 
         adapter.itemClick = object : MyAdapter.ItemClick {
@@ -175,6 +174,13 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
                 intent.putExtra("productData", dataList[position])
                 startActivity(intent)
+            }
+        }
+
+        adapter.itemLongClick = object : MyAdapter.ItemLongClick {
+            override fun onLongClick(view: View, position: Int) {
+                val dlg = DeleteDialog(this@MainActivity, dataList, position, adapter)
+                dlg.show()
             }
         }
 
